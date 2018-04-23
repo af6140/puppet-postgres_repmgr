@@ -1,0 +1,45 @@
+#Managed by Puppet
+node_id=<%= @node_id -%>  	     	     
+node_name=<%= @node_name %>
+conninfo='host=<%= @pg_host %> user=<%= @repmgr_db_user %> dbname=<%= @repmgr_db_name %>'
+rsync_options=--archive --checksum --compress --progress --rsh="ssh -o \"StrictHostKeyChecking no\""
+ssh_options=-o "StrictHostKeyChecking no"
+data_directory='<%= @pg_datadir %>'
+replication_user='<%= @repmgr_db_user %>'
+
+#------------------------------------------------------------------------------
+# Replication settings
+#------------------------------------------------------------------------------
+replication_type=physical	 # Must be one of 'physical' or 'bdr'.
+failover=<%= @failover %>
+priority=<%= @node_priority %>
+<% if @pg_basebackup_options -%>
+pg_basebackup_options='<%= @pg_basebackup_options -%>'
+<% end -%>
+
+# Log settings
+log_level=INFO	
+log_facility=STDERR		
+log_file='<%= @log_dir -%>/repmgr.log'
+#log_status_interval=300	 # interval (in seconds) for repmgrd to log a status message
+
+#
+# Event notification
+#
+#event_notification_command=''		
+#event_notifications=''
+
+#
+pg_bindir=<%= @pg_bindir %>
+use_primary_conninfo_password=false
+#passfile=''
+
+#------------------------------------------------------------------------------
+# service control commands
+#------------------------------------------------------------------------------
+service_start_command = '<%= @service_start_cmd %>'
+service_stop_command = '<%= @service_stop_cmd %>'
+service_restart_command = '<%= @service_restart_cmd %>'
+service_reload_command = '<%= @service_reload_cmd %>'
+#service_promote_command = ''	
+
