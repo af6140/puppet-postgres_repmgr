@@ -44,7 +44,6 @@
 #
 class postgres_repmgr(
   String[1] $package_version=$::postgres_repmgr::params::package_version,
-  String[1] $conf_dir = $::postgres_repmgr::params::conf_dir,
   Enum['manual','automatic'] $failover= $::postgres_repmgr::params::failover,
   String[1] $log_dir = $::postgres_repmgr::params::log_dir,
   String[2] $pg_version = $::postgres_repmgr::params::pg_version,
@@ -63,10 +62,12 @@ class postgres_repmgr(
   $version_int = regsubst($pg_version, '\D+', '\1', 'G')
   $package_name = "repmgr${version_int}"
   $service_name = "postgresql-${pg_version}"
+  $repmgr_service_name = "repmgr${version_int}"
   $service_start_cmd = "systemctl start ${service_name}"
   $service_stop_cmd = "systemctl stop ${service_name}"
   $service_restart_cmd = "systemctl restart ${service_name}"
   $service_reload_cmd = "systemctl reload ${service_name}"
+  $conf_dir = "/etc/repmgr/${pg_version}"
 
 
   $pg_bindir = "/usr/lib/pgsql/${pg_version}/bin"
@@ -77,5 +78,7 @@ class postgres_repmgr(
   class {'postgres_repmgr::install':
   } ->
   class {'postgres_repmgr::config':
+  } ~>
+  class {'postgres_repmgr::service':
   }
 }

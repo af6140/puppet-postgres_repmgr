@@ -16,7 +16,7 @@ describe 'postgres_repmgr' do
       it { should contain_class('postgres_repmgr') }
 
       it { should contain_package('repmgr96')}
-      it { should contain_file('/etc/repmgr/repmgr.conf')
+      it { should contain_file('/etc/repmgr/9.6/repmgr.conf')
         .with_content(/node_id=1/)
         .with_content(/node_name=test.dev.example.com/)
         .with_content(/priority=101/)
@@ -28,6 +28,8 @@ describe 'postgres_repmgr' do
         .with_content(/data_directory='\/var\/lib\/pgsql\/9.6\/data/)
 
       }
+
+      it { should contain_service('repmgr96')}
     end
   end
 end
