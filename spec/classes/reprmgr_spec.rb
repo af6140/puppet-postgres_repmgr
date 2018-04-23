@@ -2,7 +2,7 @@ require 'spec_helper'
 describe 'postgres_repmgr' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
-      let(:facts) do 
+      let(:facts) do
         facts[:fqdn] = 'test.dev.example.com'
         facts
       end
@@ -10,6 +10,7 @@ describe 'postgres_repmgr' do
         :pg_version => '9.6',
         :node_id => '1',
         :node_priority => 101,
+        :primary_node => 'test.dev.example.com'
       } }
 
       it { should contain_class('postgres_repmgr') }

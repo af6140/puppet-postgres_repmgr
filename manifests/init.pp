@@ -56,9 +56,10 @@ class postgres_repmgr(
   String[1] $repmgr_db_name= $::postgres_repmgr::params::repmgr_db_name,
   Optional[String[1]] $pg_basebackup_options= $postgres_repmgr::params::pg_basebackup_options,
   String[1] $pg_passfile = $postgres_repmgr::params::pg_passfile,
+  String[1] $primary_node,
 ) inherits postgres_repmgr::params {
 
-  
+
   $version_int = regsubst($pg_version, '\D+', '\1', 'G')
   $package_name = "repmgr${version_int}"
   $service_name = "postgresql-${pg_version}"
@@ -70,7 +71,7 @@ class postgres_repmgr(
 
   $pg_bindir = "/usr/lib/pgsql/${pg_version}/bin"
   $pg_datadir = "/var/lib/pgsql/${pg_version}/data"
-  
+
 
 
   class {'postgres_repmgr::install':
