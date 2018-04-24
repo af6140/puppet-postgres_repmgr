@@ -82,7 +82,7 @@ class postgres_repmgr(
   class {'postgres_repmgr::install':
   } ->
   class {'postgres_repmgr::config':
-  } ~>
+  } ->
   class {'postgres_repmgr::service':
   }
 }

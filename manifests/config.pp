@@ -11,7 +11,8 @@ class postgres_repmgr::config (
     mode => '0600',
     owner => 'postgres',
     group => 'postgres',
-    content => template('postgres_repmgr/repmgr.conf.erb')
+    content => template('postgres_repmgr/repmgr.conf.erb'),
+    notify => Service[$::postgres_repmgr::repmgr_service_name],
   }
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
