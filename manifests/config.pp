@@ -19,6 +19,6 @@ class postgres_repmgr::config (
     mode => '0600',
     owner => 'postgres',
     group => 'postgres',
-    content => "${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}}"
+    content => "${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
   }
 }
