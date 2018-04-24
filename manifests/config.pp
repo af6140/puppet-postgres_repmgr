@@ -5,14 +5,16 @@ class postgres_repmgr::config (
   file { $::postgres_repmgr::conf_dir:
     ensure => 'directory',
     mode => '0755',
-  } -> 
+  } ->
   file { "${::postgres_repmgr::conf_dir}/repmgr.conf":
     ensure => 'present',
     mode => '0600',
+    owner => 'postgres',
+    group => 'postgres',
     content => template('postgres_repmgr/repmgr.conf.erb')
   }
 
-  file {$::postgres_repmgr::pg_passfile: 
+  file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
     mode => '0600',
     owner => 'postgres',
