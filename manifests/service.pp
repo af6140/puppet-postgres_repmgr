@@ -15,6 +15,5 @@ class postgres_repmgr::service {
   service {$::postgres_repmgr::repmgr_service_name:
     ensure => 'running',
     enable => true,
-    require => Service[$::postgres_repmgr::pg_service_name]
   }
 }
