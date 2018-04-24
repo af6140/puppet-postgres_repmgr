@@ -63,6 +63,7 @@ class postgres_repmgr(
   $package_name = "repmgr${version_int}"
   $service_name = "postgresql-${pg_version}"
   $repmgr_service_name = "repmgr${version_int}"
+  $pg_service_name = "postgresql-${pg_version}"
   $service_start_cmd = "systemctl start ${service_name}"
   $service_stop_cmd = "systemctl stop ${service_name}"
   $service_restart_cmd = "systemctl restart ${service_name}"

@@ -1,7 +1,7 @@
 #Managed by Puppet
 node_id=<%= @node_id %>
 node_name=<%= @node_name %>
-conninfo='host=<%= @pg_host -%> user=<%= @repmgr_db_user -%> dbname=<%= @repmgr_db_name -%> password=<% @repmgr_db_pass -%>'
+conninfo='host=<%= @pg_host -%> user=<%= @repmgr_db_user -%> dbname=<%= @repmgr_db_name -%> password=<%= @repmgr_db_pass -%>'
 rsync_options=--archive --checksum --compress --progress --rsh="ssh -o \"StrictHostKeyChecking no\""
 ssh_options=-o "StrictHostKeyChecking no"
 data_directory='<%= @pg_datadir %>'

@@ -20,7 +20,7 @@ describe 'postgres_repmgr' do
         .with_content(/node_id=1/)
         .with_content(/node_name=test.dev.example.com/)
         .with_content(/priority=101/)
-        .with_content(/conninfo='host=127.0.0.1 user=repmgr dbname=repmgr'/)
+        .with_content(/conninfo='host=127.0.0.1 user=repmgr dbname=repmgr/)
         .with_content(/failover=manual/)
         .with_content(/replication_user='repmgr'/)
         .with_content(/log_file='\/var\/log\/repmgr\/repmgr.log'/)

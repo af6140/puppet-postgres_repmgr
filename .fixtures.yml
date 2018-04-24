@@ -1,0 +1,17 @@
+fixtures:
+  forge_modules:
+    postgres:
+      repo: 'puppetlabs/postgresql'
+      ref: '4.9.0'
+    stdlib:
+      repo: 'puppetlabs/stdlib'
+      ref: '4.6.0'
+    concat:
+      repo: 'puppetlabs/concat'
+      ref: '1.2.5'
+    sudo:
+      repo: 'saz/sudo'
+      ref: '3.1.0'
+
+  symlinks:
+    postgres_repmgr: "#{source_dir}"
