@@ -10,7 +10,7 @@ describe 'postgres_repmgr' do
         :pg_version => '9.6',
         :node_id => '1',
         :node_priority => 101,
-        :primary_node => 'test.dev.example.com'
+        :primary_node => true,
       } }
 
       it { should contain_class('postgres_repmgr') }
@@ -24,7 +24,7 @@ describe 'postgres_repmgr' do
         .with_content(/failover=manual/)
         .with_content(/replication_user='repmgr'/)
         .with_content(/log_file='\/var\/log\/repmgr\/repmgr.log'/)
-        .with_content(/pg_bindir=\/usr\/lib\/pgsql\/9.6\/bin/)
+        .with_content(/pg_bindir=\/usr\/pgsql-9.6\/bin/)
         .with_content(/data_directory='\/var\/lib\/pgsql\/9.6\/data/)
 
       }

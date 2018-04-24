@@ -55,7 +55,7 @@ class postgres_repmgr(
   String[1] $repmgr_db_name= $::postgres_repmgr::params::repmgr_db_name,
   Optional[String[1]] $pg_basebackup_options= $postgres_repmgr::params::pg_basebackup_options,
   String[1] $pg_passfile = $postgres_repmgr::params::pg_passfile,
-  String[1] $primary_node,
+  Boolean  $primary_node = false,
 ) inherits postgres_repmgr::params {
 
 
@@ -71,7 +71,7 @@ class postgres_repmgr(
   $conf_dir = "/etc/repmgr/${pg_version}"
 
 
-  $pg_bindir = "/usr/lib/pgsql/${pg_version}/bin"
+  $pg_bindir = "/usr/pgsql-${pg_version}/bin"
   $pg_datadir = "/var/lib/pgsql/${pg_version}/data"
 
 

@@ -13,12 +13,15 @@ class postgres_repmgr::config (
     group => 'postgres',
     content => template('postgres_repmgr/repmgr.conf.erb')
   }
-
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
     mode => '0600',
     owner => 'postgres',
     group => 'postgres',
     content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
+  }
+
+  if $postgres_repmgr::primary_node {
+    include 'postgres_repmgr::nodes::register_primary'
   }
 }
