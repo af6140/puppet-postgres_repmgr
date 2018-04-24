@@ -13,6 +13,7 @@ class postgres_repmgr::config (
     group => 'postgres',
     content => template('postgres_repmgr/repmgr.conf.erb'),
     notify => Service[$::postgres_repmgr::repmgr_service_name],
+    require => Package[$::postgres_repmgr::package_name],
   }
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
@@ -24,7 +25,9 @@ class postgres_repmgr::config (
 
   if $postgres_repmgr::primary_node == $::fqdn {
     notify {"node ${::postgres_repmgr::primary_node} is primary node ":
+    }->
+    class{'postgres_repmgr::nodes::register_primary':
+      require => File["${::postgres_repmgr::conf_dir}/repmgr.conf"]
     }
-    include 'postgres_repmgr::nodes::register_primary'
   }
 }

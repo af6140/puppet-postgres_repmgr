@@ -8,6 +8,6 @@ class postgres_repmgr::nodes::register_primary{
       path => "${::postgres_repmgr::pg_bindir}/bin:/bin:/sbin:/usr/bin:/usr/sbin",
       command => $register_cmd,
       user    => 'postgres',
-      unless => $check_cluster_status, #only execute when no cluster status
+      unless => $check_cluster_status, #only execute when no cluster status,
     }
 }
