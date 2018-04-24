@@ -10,7 +10,7 @@ describe 'postgres_repmgr' do
         :pg_version => '9.6',
         :node_id => '1',
         :node_priority => 101,
-        :primary_node => true,
+        :primary_node => 'test.dev.example.com',
       } }
 
       it { should contain_class('postgres_repmgr') }

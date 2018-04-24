@@ -6,7 +6,7 @@ class postgres_repmgr::params {
   $log_dir = '/var/log/repmgr'
 
   $failover = 'manual'
-  
+
   $repmgr_db_user = 'repmgr'
   $repmgr_db_name = 'repmgr'
   $repmgr_db_pass = 'password'
@@ -15,6 +15,7 @@ class postgres_repmgr::params {
 
   #https://repmgr.org/docs/4.0/cloning-advanced.html
   $pg_passfile = "${conf_dir}/.pgpass"
-  
+
+  $remote_user = 'repmgr'
 
 }

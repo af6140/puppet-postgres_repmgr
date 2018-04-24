@@ -55,7 +55,8 @@ class postgres_repmgr(
   String[1] $repmgr_db_name= $::postgres_repmgr::params::repmgr_db_name,
   Optional[String[1]] $pg_basebackup_options= $postgres_repmgr::params::pg_basebackup_options,
   String[1] $pg_passfile = $postgres_repmgr::params::pg_passfile,
-  Boolean  $primary_node = false,
+  String[1] $primary_node,
+  String[1] $remote_user = $postgres_repmgr::params::remote_user,
 ) inherits postgres_repmgr::params {
 
 
@@ -64,10 +65,11 @@ class postgres_repmgr(
   $service_name = "postgresql-${pg_version}"
   $repmgr_service_name = "repmgr${version_int}"
   $pg_service_name = "postgresql-${pg_version}"
-  $service_start_cmd = "systemctl start ${service_name}"
-  $service_stop_cmd = "systemctl stop ${service_name}"
-  $service_restart_cmd = "systemctl restart ${service_name}"
-  $service_reload_cmd = "systemctl reload ${service_name}"
+  $service_start_cmd = "sudo systemctl start ${service_name}"
+  $service_stop_cmd = "sudo systemctl stop ${service_name}"
+  $service_restart_cmd = "sudo systemctl restart ${service_name}"
+  $service_reload_cmd = "sudo systemctl reload ${service_name}"
+  $service_status_cmd = "sudo systemctl status ${service_name}"
   $conf_dir = "/etc/repmgr/${pg_version}"
 
 

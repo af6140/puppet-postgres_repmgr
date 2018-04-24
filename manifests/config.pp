@@ -21,7 +21,9 @@ class postgres_repmgr::config (
     content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
   }
 
-  if $postgres_repmgr::primary_node {
+  if $postgres_repmgr::primary_node == $::fqdn {
+    notify {"node ${::postgres_repmgr::primary_node} is primary node ":
+    }
     include 'postgres_repmgr::nodes::register_primary'
   }
 }
