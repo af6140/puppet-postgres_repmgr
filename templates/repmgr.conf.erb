@@ -33,7 +33,7 @@ log_file='<%= @log_dir -%>/repmgr.log'
 #
 pg_bindir=<%= @pg_bindir %>
 use_primary_conninfo_password=false
-#passfile=''
+passfile='<%= @pg_passfile %>'
 
 #------------------------------------------------------------------------------
 # service control commands
