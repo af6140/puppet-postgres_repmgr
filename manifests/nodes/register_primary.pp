@@ -7,6 +7,8 @@ class postgres_repmgr::nodes::register_primary{
     exec { 'register_primary':
       command => $register_cmd,
       user    => 'postgres',
+      tries => 5,
+      try_sleep => 5,
       unless => $check_cluster_status, #only execute when no cluster status,
     }
 }
