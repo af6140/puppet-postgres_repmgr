@@ -97,8 +97,6 @@ class postgres_repmgr(
   } ->
   class {'postgres_repmgr::service':
   }
-
-  contain 'postgres_repmgr::install'
   contain 'postgres_repmgr::config'
   contain 'postgres_repmgr::service'
 }
