@@ -8,7 +8,7 @@ class postgres_repmgr::config (
   } ->
   file { "${::postgres_repmgr::conf_dir}/repmgr.conf":
     ensure => 'present',
-    mode => '0600',
+    mode => '0660',
     owner => 'postgres',
     group => 'postgres',
     content => template('postgres_repmgr/repmgr.conf.erb'),
@@ -19,7 +19,7 @@ class postgres_repmgr::config (
   if $::fqdn != $primary_node {
     file { "${::postgres_repmgr::conf_dir}/standby_clone.sh":
       ensure => 'present',
-      mode => '0700',
+      mode => '0770',
       owner => 'postgres',
       group => 'postgres',
       content => template('postgres_repmgr/standby_clone.sh.erb'),
