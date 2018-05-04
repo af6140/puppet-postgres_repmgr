@@ -2,7 +2,7 @@
 node_id=<%= @node_id %>
 node_name=<%= @node_name %>
 #The host value is writeen to repmgr database, and used in process of standby clone etc.
-conninfo='host=<%= @repmgr_db_host -%> user=<%= @repmgr_db_user -%> dbname=<%= @repmgr_db_name -%>'
+conninfo='host=<%= @repmgr_db_host -%> user=<%= @repmgr_db_user -%> dbname=<%= @repmgr_db_name -%> password=<%= @repmgr_db_pass -%>'
 <% if @ssh_public_key_path -%>
 rsync_options=--archive --checksum --compress --progress --rsh="ssh -o \"StrictHostKeyChecking no\" -i <%= @ssh_public_key_path -%>"
 ssh_options=-o "StrictHostKeyChecking no" -i <%= @ssh_public_key_path -%>
