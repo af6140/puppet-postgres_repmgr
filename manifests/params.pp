@@ -11,7 +11,7 @@ class postgres_repmgr::params {
   $repmgr_db_name = 'repmgr'
   $repmgr_db_pass = 'password'
 
-  $pg_basebackup_options = '--fast-checkpoint' #faster but may afffect pg performance
+  $pg_basebackup_options = '-c' #faster but may afffect pg performance
 
   #https://repmgr.org/docs/4.0/cloning-advanced.html
   $pg_passfile = "${conf_dir}/.pgpass"
