@@ -15,6 +15,18 @@ class postgres_repmgr::config (
     notify => Service[$::postgres_repmgr::repmgr_service_name],
     require => Package[$::postgres_repmgr::package_name],
   }
+
+  if $::fqdn != $primary_node {
+    file { "${::postgres_repmgr::conf_dir}/standby_clone.sh":
+      ensure => 'present',
+      mode => '0700',
+      owner => 'postgres',
+      group => 'postgres',
+      content => template('postgres_repmgr/standby_clone.sh.erb'),
+      require => File["${::postgres_repmgr::conf_dir}/repmgr.conf"]
+    }
+  }
+
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
     mode => '0600',

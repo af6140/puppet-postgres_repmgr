@@ -1,0 +1,4 @@
+#!/bin/bash
+<%= @pg_bindir -%>/repmgr --force -f /etc/repmgr/<%= @pg_version -%>/repmgr.conf -h <%= @primary_node -%> -U <%= @repmgr_db_user -%> -d <%= @repmgr_db_name %>  \
+ --upstream-conninfo 'host=<%= @primary_node %> user=<%= @repmgr_db_user%> dbname=<%= @repmgr_db_name%> password=<%= @repmgr_db_pass -%>'  \
+ standby clone
