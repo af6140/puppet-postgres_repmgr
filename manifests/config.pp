@@ -29,7 +29,7 @@ class postgres_repmgr::config (
 
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
-    mode => '0660',
+    mode => '0600',
     owner => 'postgres',
     group => 'postgres',
     content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
