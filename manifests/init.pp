@@ -50,6 +50,7 @@ class postgres_repmgr(
   String[1] $node_id,
   Integer $node_priority = 100,
   String[3] $node_name = $::fqdn,
+  String[1] $repmgr_db_host = $::postgres_repmgr::params::repmgr_db_host,
   String[1] $repmgr_db_user= $::postgres_repmgr::params::repmgr_db_user,
   String[1] $repmgr_db_pass = $::postgres_repmgr::params::repmgr_db_pass,
   String[1] $repmgr_db_name= $::postgres_repmgr::params::repmgr_db_name,
