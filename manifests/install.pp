@@ -6,7 +6,7 @@ class postgres_repmgr::install {
   file { $::postgres_repmgr::log_dir:
     ensure => 'directory'
   } ->
-  file { "${postgres_repmgr::pg_bindri}/repmgr" :
+  file { "${postgres_repmgr::pg_bindir}/repmgr" :
     ensure  => 'present',
     replace => 'no', # this is the important property
     content => "From Puppet\n",
