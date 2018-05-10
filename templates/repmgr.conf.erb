@@ -51,3 +51,7 @@ service_restart_command = '<%= @service_restart_cmd %>'
 service_reload_command = '<%= @service_reload_cmd %>'
 #service_promote_command = ''
 
+
+#promote follow
+promote_command = '<%= @pg_bindir -%>/repmgr -f <%= @conf_dir -%>/repmgr.conf standby promote'
+follow_command = '<%= @pg_bindir -%>/repmgr -f <%= @conf_dir -%>/repmgr.conf standby follow -W --upstream-node-id=%n'
