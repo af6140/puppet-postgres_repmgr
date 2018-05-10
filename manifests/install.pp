@@ -13,6 +13,5 @@ class postgres_repmgr::install {
     mode    => '4744',
     owner => 'postgres',
     group  => 'root',
-    require =>
   }
 }
