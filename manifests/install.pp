@@ -11,6 +11,8 @@ class postgres_repmgr::install {
     replace => 'no', # this is the important property
     content => "From Puppet\n",
     mode    => '4744',
+    owner => 'postgres',
+    group  => 'root',
     require =>
   }
 }
