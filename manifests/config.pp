@@ -51,6 +51,6 @@ class postgres_repmgr::config (
      permissions => [
        "user:${remote_user}:r-X"
      ],
-     noop => true,
+     require => User[$remote_user],
   }
 }
