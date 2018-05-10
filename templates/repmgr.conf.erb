@@ -55,3 +55,4 @@ service_reload_command = '<%= @service_reload_cmd %>'
 #promote follow
 promote_command = '<%= @pg_bindir -%>/repmgr -f <%= @conf_dir -%>/repmgr.conf standby promote'
 follow_command = '<%= @pg_bindir -%>/repmgr -f <%= @conf_dir -%>/repmgr.conf standby follow -W --upstream-node-id=%n'
+service_promote_command = 'sudo -u postgres <%= @pg_bindir -%>/pg_ctl  -w -D <%= @pg_datadir -%> promote'
