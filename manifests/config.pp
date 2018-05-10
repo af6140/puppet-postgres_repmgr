@@ -42,5 +42,13 @@ class postgres_repmgr::config (
       require => File["${::postgres_repmgr::conf_dir}/repmgr.conf"]
     }
   }
-
+  # ::fooacl::conf { 'pg_data_archive_status':
+  #    target      => [
+  #      "/var/lib/pgsql/${::postgres_repmgr::pg_version}",
+  #    ],
+  #    permissions => [
+  #      "user:${remote_user}:r-X"
+  #    ],
+  #    require => User[$remote_user],
+  # }
 }
