@@ -58,7 +58,7 @@ class postgres_repmgr(
   String[1] $pg_passfile = $postgres_repmgr::params::pg_passfile,
   String[1] $primary_node,
   String[1] $remote_user = $postgres_repmgr::params::remote_user,
-  Optional[String[1]] $ssh_public_key_path = undef,
+  Optional[String[1]] $ssh_public_key_path = '/home/repmgr/.ssh/id_rsa',
 ) inherits postgres_repmgr::params {
 
 
