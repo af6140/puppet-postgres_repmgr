@@ -42,4 +42,15 @@ class postgres_repmgr::config (
       require => File["${::postgres_repmgr::conf_dir}/repmgr.conf"]
     }
   }
+
+   # for repmgr remote user, that access, need for standby switchover
+  ::fooacl::conf { 'pg_data_archive_status':
+     target      => [
+       "/var/lib/pgsql/${::postgres_repmgr::pg_version}/data/pg_xlog/archive_status",
+     ],
+     permissions => [
+       "user:${remote_user}:r-X"
+     ],
+     noop => true,
+  }
 }
