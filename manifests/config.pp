@@ -33,7 +33,7 @@ class postgres_repmgr::config (
     mode => '0600',
     owner => 'postgres',
     group => 'postgres',
-    content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:5432:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
+    content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:*:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
   }
 
   file {'/home/repmgr/.pgpass':
@@ -41,7 +41,7 @@ class postgres_repmgr::config (
     mode => '0600',
     owner => 'repmgr',
     group => 'repmgr',
-    content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:5432:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
+    content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:*:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
   }
 
   if $postgres_repmgr::primary_node == $::fqdn {
