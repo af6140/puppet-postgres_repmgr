@@ -27,11 +27,20 @@ class postgres_repmgr::config (
     }
   }
 
+  #https://repmgr.org/docs/4.0/cloning-advanced.html, see managing password
   file {$::postgres_repmgr::pg_passfile:
     ensure=> 'present',
     mode => '0600',
     owner => 'postgres',
     group => 'postgres',
+    content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:5432:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
+  }
+
+  file {'/home/repmgr/.pgpass':
+    ensure=> 'present',
+    mode => '0600',
+    owner => 'repmgr',
+    group => 'repmgr',
     content => "*:*:${::postgres_repmgr::repmgr_db_name}:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}\n*:5432:replication:${::postgres_repmgr::repmgr_db_user}:${::postgres_repmgr::repmgr_db_pass}"
   }
 
